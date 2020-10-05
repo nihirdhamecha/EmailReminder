@@ -1,7 +1,14 @@
 import smtplib
 import requests
 import json
+response = requests.get("https://api.quotable.io/random")
 
+
+t = response.json()
+c = t['content']
+q = t['author']
+test = c+"\n\n~"+q+"\n\n"
+print(test)
 
 
 
@@ -12,7 +19,7 @@ gmail_password = '****[your password]'
 sent_from = gmail_user
 to = ['abc@gmail.com'] #list of recivers
 subject = 'READy to READ'
-body = 'Time to read boy!'
+body = test
 
 email_text = """\
 From: %s
